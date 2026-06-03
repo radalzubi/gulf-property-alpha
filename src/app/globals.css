@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-terminal-bg text-terminal-text antialiased;
+}
+
+/* Tabular numerals only where columns of numbers need to align */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Soft light scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d3d7dd transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #d3d7dd;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-terminal-border bg-terminal-panel shadow-panel;
+  }
+  .panel-2 {
+    @apply rounded-xl border border-terminal-border bg-terminal-panel2;
+  }
+  /* Calm, sentence-case labels (no terminal-style ALL CAPS) */
+  .kpi-label {
+    @apply text-xs font-medium text-terminal-muted;
+  }
+  .kpi-value {
+    @apply text-2xl font-semibold text-terminal-textHi;
+  }
+  .hairline {
+    @apply border-terminal-border;
+  }
+  .data-grid th {
+    @apply sticky top-0 z-10 whitespace-nowrap bg-terminal-panel px-3.5 py-2.5 text-left text-xs font-medium text-terminal-muted;
+  }
+  .data-grid td {
+    @apply whitespace-nowrap border-t border-terminal-border px-3.5 py-2.5 text-sm;
+  }
+  .data-grid tr:hover td {
+    @apply bg-terminal-panel2/70;
+  }
+}
+
+/* Calm loading placeholder */
+.skeleton {
+  background: #eef0f3;
+  border-radius: 8px;
+  animation: pulse2 1.5s ease-in-out infinite;
+}
+@keyframes pulse2 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* maplibre — light theme popups */
+.maplibregl-popup-content {
+  background: #ffffff !important;
+  color: #3f444c !important;
+  border: 1px solid #e6e8eb;
+  border-radius: 10px;
+  padding: 0 !important;
+  box-shadow: 0 8px 24px -12px rgba(16, 24, 40, 0.25);
+}
+.maplibregl-popup-tip {
+  border-top-color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: #6b7280 !important;
+}

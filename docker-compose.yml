@@ -1,0 +1,45 @@
+# Cheapest fully-owned deployment: a single VPS running Postgres+PostGIS, the
+# Next.js app, and the ingestion worker. `docker compose up -d` then point your
+# domain at the host (add a reverse proxy / TLS such as Caddy or Traefik).
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: gpa
+      POSTGRES_PASSWORD: gpa_change_me
+      POSTGRES_DB: gulf_property_alpha
+    volumes:
+      - gpa_pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gpa -d gulf_property_alpha"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://gpa:gpa_change_me@db:5432/gulf_property_alpha
+      DATA_BACKEND: postgres
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  worker:
+    build: .
+    command: ["npm", "run", "worker"]
+    environment:
+      DATABASE_URL: postgresql://gpa:gpa_change_me@db:5432/gulf_property_alpha
+      DATA_BACKEND: postgres
+      ENABLE_SCHEDULER: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  gpa_pgdata:
