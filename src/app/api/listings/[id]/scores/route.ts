@@ -3,7 +3,8 @@ import { fail, ok } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const repo = await getRepository();
   const score = await repo.getListingScore(params.id);
   if (!score) return fail("Score not found", 404);
