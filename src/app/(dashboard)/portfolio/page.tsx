@@ -3,7 +3,7 @@ import { DEFAULT_USER_ID } from "@/lib/api";
 import { PageShell } from "@/components/PageShell";
 import { Panel, PanelHeader, Stat, DataTable, Tag, ScoreBar } from "@/components/ui";
 import { AddAssetForm } from "@/components/portfolio/AddAssetForm";
-import { fmtAED, fmtPct, fmtNum, fmtSignedPct, fmtDate } from "@/lib/utils";
+import { fmtAED, fmtPct, fmtNum, fmtDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 

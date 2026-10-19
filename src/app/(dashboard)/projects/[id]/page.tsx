@@ -5,7 +5,7 @@ import { PageShell } from "@/components/PageShell";
 import { Panel, PanelHeader, Stat, Button, Tag } from "@/components/ui";
 import { LineSeries } from "@/components/charts/LineSeries";
 import { ListingCard } from "@/components/ListingCard";
-import { fmtDate, fmtNum } from "@/lib/utils";
+import { fmtDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRepository } from "@/lib/repo";
 import { PageShell } from "@/components/PageShell";
-import { Panel, PanelHeader, Stat, DataTable, Tag, Button } from "@/components/ui";
+import { Panel, PanelHeader, Stat, Button } from "@/components/ui";
 import { LineSeries } from "@/components/charts/LineSeries";
 import { ListingCard } from "@/components/ListingCard";
 import { fmtAED, fmtNum, fmtPct, fmtSignedPct } from "@/lib/utils";

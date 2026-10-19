@@ -5,11 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import type { Area, Recommendation, ScoredListing, ScoringWeights } from "@/types/domain";
 import { apiGet, apiSend } from "@/lib/client";
 import { PRESET_PROFILES } from "@/lib/recommender/profiles";
-import { DEFAULT_WEIGHTS } from "@/lib/scoring/dealScore";
 import { Topbar } from "@/components/shell/Topbar";
 import { ListingCard } from "@/components/ListingCard";
 import { RecommendationWeightSliders } from "@/components/RecommendationWeightSliders";
-import { Button, EmptyState, Skeleton, Stat } from "@/components/ui";
+import { EmptyState, Skeleton, Stat } from "@/components/ui";
 import { cn, fmtPct, fmtSignedPct } from "@/lib/utils";
 import { TrendingUp } from "lucide-react";
 

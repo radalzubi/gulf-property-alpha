@@ -6,7 +6,7 @@ import type { ScoredListing } from "@/types/domain";
 import { apiGet } from "@/lib/client";
 import { Panel, PanelHeader, Field, Input, Stat, Button } from "@/components/ui";
 import { amortizationSchedule, breakEvenOccupancy, dscr, irr, monthlyMortgagePayment, paybackPeriodYears } from "@/lib/finance";
-import { fmtAED, fmtNum, fmtPct } from "@/lib/utils";
+import { fmtAED, fmtPct } from "@/lib/utils";
 
 interface Inputs {
   purchasePrice: number;

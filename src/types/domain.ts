@@ -1,4 +1,4 @@
-import type { FieldProvenance, ProvenanceEntry, SourceClass } from "@/lib/provenance";
+import type { FieldProvenance, SourceClass } from "@/lib/provenance";
 
 export type Emirate = "Dubai" | "Abu Dhabi" | "Sharjah" | "Ras Al Khaimah" | "Riyadh" | "Jeddah" | "Doha";
 

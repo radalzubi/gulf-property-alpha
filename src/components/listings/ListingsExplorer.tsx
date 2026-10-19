@@ -64,7 +64,7 @@ export function ListingsExplorer() {
   const items = data?.items ?? [];
   const sort = (col: string) =>
     setFilters((f) => ({ ...f, sortBy: col, sortDir: f.sortBy === col && f.sortDir === "desc" ? "asc" : "desc" }));
-  const toggle = (id: string) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
+  const toggle = (id: string) => setSelected((s) => { const n = new Set(s); if (n.has(id)) n.delete(id); else n.add(id); return n; });
 
   const exportHref = `/api/export?type=listings&${queryString.replace(/^\?/, "")}`;
 
@@ -166,14 +166,14 @@ export function ListingsExplorer() {
                   <Th label="Area / Building" />
                   <Th label="Type" />
                   <Th label="Beds" />
-                  <ThSort label="Price" col="price" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
-                  <ThSort label="AED/sqft" col="psf" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
-                  <ThSort label="Value gap" col="valueGap" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
-                  <ThSort label="Net yield" col="netYield" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
+                  <ThSort label="Price" col="price" cur={filters.sortBy} onSort={sort} />
+                  <ThSort label="AED/sqft" col="psf" cur={filters.sortBy} onSort={sort} />
+                  <ThSort label="Value gap" col="valueGap" cur={filters.sortBy} onSort={sort} />
+                  <ThSort label="Net yield" col="netYield" cur={filters.sortBy} onSort={sort} />
                   <Th label="Down" />
                   <Th label="Source" />
-                  <ThSort label="Deal" col="dealScore" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
-                  <ThSort label="Conf" col="confidence" cur={filters.sortBy} dir={filters.sortDir} onSort={sort} />
+                  <ThSort label="Deal" col="dealScore" cur={filters.sortBy} onSort={sort} />
+                  <ThSort label="Conf" col="confidence" cur={filters.sortBy} onSort={sort} />
                   <Th label="Risk" />
                   <Th label="Refreshed" />
                 </tr>
@@ -221,7 +221,7 @@ export function ListingsExplorer() {
 function Th({ label }: { label: string }) {
   return <th>{label}</th>;
 }
-function ThSort({ label, col, cur, dir, onSort }: { label: string; col: string; cur: string; dir: string; onSort: (c: string) => void }) {
+function ThSort({ label, col, cur, onSort }: { label: string; col: string; cur: string; onSort: (c: string) => void }) {
   return (
     <th>
       <button onClick={() => onSort(col)} className="inline-flex items-center gap-1 hover:text-terminal-textHi">
