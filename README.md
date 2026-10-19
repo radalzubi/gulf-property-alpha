@@ -61,7 +61,7 @@ ENABLE_SCHEDULER=true npm run worker  # node-cron tick; runs due connectors
 
 ## Architecture
 
-- **Next.js 14 (App Router) + TypeScript**, Tailwind, TanStack Query, MapLibre, Recharts.
+- **Next.js 15 (App Router, React 19) + TypeScript**, Tailwind, TanStack Query, MapLibre, Recharts.
 - **Repository abstraction** (`src/lib/repo`): in-memory SAMPLE backend (default) or Postgres/Drizzle (`DATA_BACKEND`).
 - **Pure engines** (`src/lib/{finance,scoring,recommender,portfolio,provenance}`) — fully unit-tested, backend-agnostic.
 - **Ingestion** (`src/ingestion`): adapter framework, real Dubai open-data adapter + credentialed stubs, CSV importers, node-cron worker.

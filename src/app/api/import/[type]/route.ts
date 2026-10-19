@@ -6,7 +6,8 @@ export const dynamic = "force-dynamic";
 
 const VALID: ImportType[] = ["listings", "transactions", "rents", "portfolio"];
 
-export async function POST(req: Request, { params }: { params: { type: string } }) {
+export async function POST(req: Request, props: { params: Promise<{ type: string }> }) {
+  const params = await props.params;
   const type = params.type as ImportType;
   if (!VALID.includes(type)) return fail(`Unsupported import type: ${type}`, 400);
   const dryRun = new URL(req.url).searchParams.get("dryRun") !== "false";

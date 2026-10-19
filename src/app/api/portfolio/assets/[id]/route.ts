@@ -3,7 +3,8 @@ import { fail, ok } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   let json: unknown;
   try {
     json = await req.json();
@@ -16,7 +17,8 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   return ok(updated);
 }
 
-export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const repo = await getRepository();
   const deleted = await repo.deletePortfolioAsset(params.id);
   if (!deleted) return fail("Asset not found", 404);

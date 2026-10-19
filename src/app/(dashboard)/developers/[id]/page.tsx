@@ -8,7 +8,8 @@ import { fmtNum, fmtSignedPct, fmtDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export default async function DeveloperDetailPage({ params }: { params: { id: string } }) {
+export default async function DeveloperDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const repo = await getRepository();
   const d = await repo.getDeveloperDetail(params.id);
   if (!d) notFound();

@@ -9,7 +9,8 @@ import { fmtAED, fmtNum, fmtPct, fmtSignedPct } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export default async function AreaDetailPage({ params }: { params: { id: string } }) {
+export default async function AreaDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const repo = await getRepository();
   const d = await repo.getAreaDetail(params.id);
   if (!d) notFound();

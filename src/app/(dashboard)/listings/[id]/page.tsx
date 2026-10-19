@@ -16,7 +16,8 @@ import type { FieldProvenance } from "@/lib/provenance";
 
 export const dynamic = "force-dynamic";
 
-export default async function DealDetailPage({ params }: { params: { id: string } }) {
+export default async function DealDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const repo = await getRepository();
   const pool = (await repo.getListings({ limit: 500, hideDuplicates: false })).items;
   const l = pool.find((x) => x.id === params.id) ?? (await repo.getListing(params.id));
