@@ -17,7 +17,6 @@ export default async function DataQualityPage() {
   const dupes = listings.filter((l) => l.isDuplicate).length;
   const stale = listings.filter((l) => l.status === "stale").length;
   const noSize = listings.filter((l) => l.sizeSqft == null).length;
-  const noServiceCharge = listings.filter((l) => l.fieldProvenance?.serviceChargePsf?.sourceClass === "unavailable").length;
   const buckets = { High: 0, Medium: 0, Low: 0, Unknown: 0 };
   for (const l of listings) buckets[confidenceBucket(l.score.overallConfidence).label]++;
 

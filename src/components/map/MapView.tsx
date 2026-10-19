@@ -186,6 +186,9 @@ export function MapView() {
       });
     }
     if (!showHeat && map.getLayer("heat")) map.removeLayer("heat");
+    // Keyed on listingsKey (the listing ids) like the marker effects above, so a new
+    // array holding the same listings doesn't rebuild the heatmap source.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, showHeat, listingsKey]);
 
   // scroll active list row into view

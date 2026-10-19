@@ -11,7 +11,7 @@ import { ListingCard } from "@/components/ListingCard";
 import { computeYield, defaultAssumptions } from "@/lib/scoring";
 import { similaritySets } from "@/lib/recommender";
 import { fmtAED, fmtNum, fmtPct, fmtSignedPct, fmtDate, fmtAge, toSqm } from "@/lib/utils";
-import { CheckCircle2, XCircle, ExternalLink, MapPin } from "lucide-react";
+import { CheckCircle2, XCircle, ExternalLink } from "lucide-react";
 import type { FieldProvenance } from "@/lib/provenance";
 
 export const dynamic = "force-dynamic";

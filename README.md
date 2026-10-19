@@ -20,11 +20,12 @@ No database or credentials are required — the app serves a clearly-labeled in-
 
 ```bash
 npm run typecheck    # tsc --noEmit
+npm run lint         # ESLint (next/core-web-vitals + next/typescript)
 npm test             # vitest unit suite (engines, importer, portfolio)
 npm run build        # production build
 ```
 
-CI (`.github/workflows/ci.yml`) runs the same three commands on every push to `main` and every pull request, and also builds the Docker image and checks that it serves the sample dataset.
+CI (`.github/workflows/ci.yml`) runs the same commands on every push to `main` and every pull request, and also builds the Docker image and checks that it serves the sample dataset.
 
 ### Optional: real PostgreSQL + PostGIS
 

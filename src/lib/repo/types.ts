@@ -12,7 +12,6 @@ import type {
   ScoredListing,
   ScoringWeights,
   Watchlist,
-  WatchlistItem,
 } from "@/types/domain";
 
 export interface ListingQuery {
