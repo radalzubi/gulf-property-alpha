@@ -24,6 +24,8 @@ npm test             # vitest unit suite (engines, importer, portfolio)
 npm run build        # production build
 ```
 
+CI (`.github/workflows/ci.yml`) runs the same three commands on every push to `main` and every pull request, and also builds the Docker image and checks that it serves the sample dataset.
+
 ### Optional: real PostgreSQL + PostGIS
 
 ```bash
