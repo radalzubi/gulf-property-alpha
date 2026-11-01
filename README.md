@@ -1,6 +1,21 @@
 # Gulf Property Alpha
 
-> Institutional real-estate **deal-finding & portfolio-management terminal** for **Dubai & Abu Dhabi**.
+[![CI](https://github.com/radalzubi/gulf-property-alpha/actions/workflows/ci.yml/badge.svg)](https://github.com/radalzubi/gulf-property-alpha/actions/workflows/ci.yml)
+
+**A property-analysis prototype for comparing deals, financing and portfolios in Dubai and Abu Dhabi.**
+
+Built by [Rad AlZubi](https://github.com/radalzubi). I implemented the interface, financial calculations, scoring, data abstraction and import workflows.
+
+**Engineering focus:** explain a property's cash flows and trade-offs with inspectable calculations, source labels and configurable assumptions.
+
+**Stage:** runs on a labeled sample dataset. A Dubai open-data adapter is implemented; several commercial connectors are stubs requiring provider access. Sample listings and modeled returns are not investment results.
+
+**Start here:** [financial calculations](src/lib/finance/index.ts) · [data adapters](src/ingestion/adapters/) · [repository layer](src/lib/repo/)
+
+---
+
+
+> Real-estate **deal-finding & portfolio-management prototype** for **Dubai & Abu Dhabi**.
 > Provenance-first, decision-oriented, and designed like an investment terminal — not a listings portal.
 
 Gulf Property Alpha collects, normalizes, **scores**, compares and monitors listings, government transaction/rental data, developer/project data, neighborhood trends, yields, payment plans, and portfolio performance. Every metric carries a **source, timestamp, confidence and explanation**, and the system never fabricates data: unknown fields are shown as *unavailable*, and "reason for sale" is shown as fact only when explicitly stated.
